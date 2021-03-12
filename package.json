@@ -1,0 +1,25 @@
+{
+  "name": "team-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fitzpatb/Team-Generator.git"
+  },
+  "author": "Brett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fitzpatb/Team-Generator/issues"
+  },
+  "homepage": "https://github.com/fitzpatb/Team-Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  }
+}
