@@ -28,7 +28,7 @@ function getManager(){
       {
         type: "input",
         message: "What is the team manager's name?",
-        name: "name",
+        name: "manager",
       },
       {
         type: "input",
@@ -89,7 +89,7 @@ function generateMember() {
             }
           ])
           .then((response) => {
-            let engineer = new Engineer(response.name, response.email, response.id, response.github);
+            let engineer = new Engineer(response.name, response.id, response.email, response.github);
             team.push(engineer);
             makeEngineer(engineer);
           })
@@ -141,7 +141,7 @@ function makeHtml() {
   </head>
   <body>
     <div class="jumbotron">
-      <h1 class="display-4">Your Team!</h1>
+      <h1>Your Team!</h1>
     </div>
     <div class="card-container">
       `;
@@ -161,8 +161,8 @@ function makeManager(boss) {
   let id = boss.getId();
   let email = boss.getEmial();
   let office = boss.officeNumber
-  const manager = `<div class="col-6">
-        <div class="card mx-auto mb-3" style="width: 18rem">
+  const manager = `<div class="col-3">
+        <div class="card" style="width: 18rem">
           <h5 class="card-header">${name}<br /><br />Manager</h5>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${id}</li>
@@ -172,7 +172,8 @@ function makeManager(boss) {
         </div>
       </div>
       <div class= "row">
-      `;
+        <div class="col-10">
+        `;
 
   fs.appendFile("./dist/generated.html", manager, function(err) {
     if (err) {
@@ -190,17 +191,15 @@ function makeEngineer(engineer) {
   let id = engineer.getId();
   let email = engineer.getEmial();
   let github = engineer.getGithub()
-  const member = `  <div class="col-6">
-          <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Manager</h5>
+  const member = `  <div class="card" style="width: 18rem">
+            <h5 class="card-header">${name}<br /><br />${title}</h5>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${id}</li>
               <li class="list-group-item">Email Address: ${email}</li>
               <li class="list-group-item">Github: ${github}</li>
             </ul>
           </div>
-        </div>
-      `;
+        `;
 
   fs.appendFile("./dist/generated.html", member, function(err) {
     if (err) {
@@ -233,17 +232,15 @@ function makeIntern(intern) {
   let id = intern.getId();
   let email = intern.getEmial();
   let school = intern.getSchool();
-  const member = `  <div class="col-6">
-          <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Manager</h5>
+  const member = `  <div class="card" style="width: 18rem">
+            <h5 class="card-header">${name}<br /><br />${title}</h5>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${id}</li>
               <li class="list-group-item">Email Address: ${email}</li>
-              <li class="list-group-item">Github: ${school}</li>
+              <li class="list-group-item">School: ${school}</li>
             </ul>
           </div>
-        </div>
-      `;
+        `;
 
   fs.appendFile("./dist/generated.html", member, function(err) {
     if (err) {
