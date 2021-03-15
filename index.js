@@ -1,7 +1,7 @@
 //required packages
 const inquirer = require("inquirer");
 const fs = require("fs");
-//const jest = require("jest");
+const jest = require("jest");
 
 //required js files
 const Manager = require("./lib/manager.js");
@@ -32,13 +32,13 @@ function getManager(){
       },
       {
         type: "input",
-        message: "What is the manager's email?",
-        name: "email",
+        message: "What is the manager's ID number?",
+        name: "id"
       },
       {
         type: "input",
-        message: "What is the manager's ID number?",
-        name: "id"
+        message: "What is the manager's email?",
+        name: "email",
       },
       {
         type: "input",
@@ -47,7 +47,7 @@ function getManager(){
       }
     ])
     .then((response) => {
-      const boss = new Manager(response.name, response.email, response.id, response.office);
+      let boss = new Manager(response.name, response.id, response.email, response.office);
       team.push(boss);
       makeManager(boss);
     });
@@ -74,13 +74,13 @@ function generateMember() {
             },
             {
               type: "input",
-              name: "email",
-              message: "What is their email?"
+              name: "id",
+              message: "What is their ID number?"
             },
             {
               type: "input",
-              name: "id",
-              message: "What is their ID number?"
+              name: "email",
+              message: "What is their email?"
             },
             {
               type: "input",
@@ -89,7 +89,7 @@ function generateMember() {
             }
           ])
           .then((response) => {
-            const engineer = new Engineer(response.name, response.email, response.id, response.github);
+            let engineer = new Engineer(response.name, response.email, response.id, response.github);
             team.push(engineer);
             makeEngineer(engineer);
           })
@@ -118,7 +118,7 @@ function generateMember() {
             }
           ])
           .then((response) => {
-            const intern = new Intern(response.name, response.email, response.id, response.school);
+            let intern = new Intern(response.name, response.id, response.email, response.school);
             team.push(intern);
             makeIntern(intern);
           })
@@ -156,12 +156,11 @@ function makeHtml() {
 };
 
 function makeManager(boss) {
-  const name = boss.getName();
-  const title = boss.getRole();
-  const id = boss.getId();
-  const email = boss.getEmial();
-  const office = boss.officeNumber
-  console.log(office);
+  let name = boss.getName();
+  let title = boss.getRole();
+  let id = boss.getId();
+  let email = boss.getEmial();
+  let office = boss.officeNumber
   const manager = `<div class="col-6">
         <div class="card mx-auto mb-3" style="width: 18rem">
           <h5 class="card-header">${name}<br /><br />Manager</h5>
@@ -173,7 +172,7 @@ function makeManager(boss) {
         </div>
       </div>
       <div class= "row">
-        `;
+      `;
 
   fs.appendFile("./dist/generated.html", manager, function(err) {
     if (err) {
@@ -186,12 +185,12 @@ function makeManager(boss) {
 }
 
 function makeEngineer(engineer) {
-  const name = engineer.getName();
-  const title = engineer.getRole();
-  const id = engineer.getId();
-  const email = engineer.getEmial();
-  const github = engineer.getGithub()
-  const member = `<div class="col-6">
+  let name = engineer.getName();
+  let title = engineer.getRole();
+  let id = engineer.getId();
+  let email = engineer.getEmial();
+  let github = engineer.getGithub()
+  const member = `  <div class="col-6">
           <div class="card mx-auto mb-3" style="width: 18rem">
             <h5 class="card-header">${name}<br /><br />Manager</h5>
             <ul class="list-group list-group-flush">
@@ -201,7 +200,7 @@ function makeEngineer(engineer) {
             </ul>
           </div>
         </div>
-        `;
+      `;
 
   fs.appendFile("./dist/generated.html", member, function(err) {
     if (err) {
@@ -229,12 +228,12 @@ function makeEngineer(engineer) {
 }
 
 function makeIntern(intern) {
-  const name = intern.getName();
-  const title = intern.getRole();
-  const id = intern.getId();
-  const email = intern.getEmial();
-  const school = intern.getSchool();
-  const member = `<div class="col-6">
+  let name = intern.getName();
+  let title = intern.getRole();
+  let id = intern.getId();
+  let email = intern.getEmial();
+  let school = intern.getSchool();
+  const member = `  <div class="col-6">
           <div class="card mx-auto mb-3" style="width: 18rem">
             <h5 class="card-header">${name}<br /><br />Manager</h5>
             <ul class="list-group list-group-flush">
@@ -244,7 +243,7 @@ function makeIntern(intern) {
             </ul>
           </div>
         </div>
-        `;
+      `;
 
   fs.appendFile("./dist/generated.html", member, function(err) {
     if (err) {
