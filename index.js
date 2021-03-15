@@ -47,7 +47,7 @@ function getManager(){
       }
     ])
     .then((response) => {
-      let boss = new Manager(response.name, response.id, response.email, response.office);
+      let boss = new Manager(response.manager, response.id, response.email, response.office);
       team.push(boss);
       makeManager(boss);
     });
@@ -144,7 +144,8 @@ function makeHtml() {
       <h1>Your Team!</h1>
     </div>
     <div class="card-container">
-      `;
+      <div class="row">
+        `;
 
   fs.writeFile("./dist/generated.html", header, function(err){
     if (err) {
@@ -162,13 +163,14 @@ function makeManager(boss) {
   let email = boss.getEmial();
   let office = boss.officeNumber
   const manager = `<div class="col-3">
-        <div class="card" style="width: 18rem">
-          <h5 class="card-header">${name}<br /><br />Manager</h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${id}</li>
-            <li class="list-group-item">Email Address: ${email}</li>
-            <li class="list-group-item">Office Phone: ${office}</li>
-          </ul>
+          <div class="card" style="width: 18rem">
+            <h5 class="card-header">${name}<br /><br />Manager</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ID: ${id}</li>
+              <li class="list-group-item"><a href = "mailto: ${email}">Email Address: ${email}</a></li>
+              <li class="list-group-item">Office Phone: ${office}</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class= "row">
@@ -195,8 +197,8 @@ function makeEngineer(engineer) {
             <h5 class="card-header">${name}<br /><br />${title}</h5>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${id}</li>
-              <li class="list-group-item">Email Address: ${email}</li>
-              <li class="list-group-item">Github: ${github}</li>
+              <li class="list-group-item"><a href = "mailto: ${email}">Email Address: ${email}</a></li>
+              <li class="list-group-item"><a href="https://github.com/${github}/">Github: ${github}</a></li>
             </ul>
           </div>
         `;
@@ -236,7 +238,7 @@ function makeIntern(intern) {
             <h5 class="card-header">${name}<br /><br />${title}</h5>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${id}</li>
-              <li class="list-group-item">Email Address: ${email}</li>
+              <li class="list-group-item"><a href = "mailto: ${email}">Email Address: ${email}</a></li>
               <li class="list-group-item">School: ${school}</li>
             </ul>
           </div>

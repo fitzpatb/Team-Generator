@@ -3,6 +3,13 @@ did not use a license.
 
 ## Description
 this allows a user to input his team and then it will generate a webpage showing his team and their information
+
+![screen-gif](./src/video.gif)
+
+[Link to video](https://vimeo.com/523879693)
+
+![picture](./src/Team-generator.png)
+
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
@@ -18,7 +25,6 @@ npm i
 ## Usage
 simply run it in the terminal and input your team informaiton
 ## License
-Unlicense## Contribute
 email bfitzpatrick28@gmail.com
 ## Tests
 ```
