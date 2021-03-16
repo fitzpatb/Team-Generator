@@ -3,7 +3,7 @@ const Intern = require('../lib/Intern');
 test("Correct school", () => {
   const school = "Purdue";
   const temp = new Intern("Bob", 1, "cool@gmail.com", school);
-  expect(temp.office).toBe(office);
+  expect(temp.school).toBe(school);
 });
 
 test("getRole() works for Intern", () => {
